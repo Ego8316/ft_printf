@@ -1,3 +1,4 @@
 libftprintf.a
+testftprintf
 */*.o
 *.out
