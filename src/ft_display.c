@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_display.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcavet <hcavet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ego <ego@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 15:00:18 by hcavet            #+#    #+#             */
-/*   Updated: 2024/10/15 16:07:20 by hcavet           ###   ########.fr       */
+/*   Updated: 2024/10/16 13:46:59 by ego              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int	ft_putchar(char c)
 {
-	return (write(1, &c, 1));
+	write(1, &c, 1);
+	return (1);
 }
 
 int	ft_putstr(char *s)
@@ -22,7 +23,8 @@ int	ft_putstr(char *s)
 	int	len;
 
 	len = ft_strlen(s);
-	return (write(1, s, len));
+	write(1, s, len);
+	return (len);
 }
 
 static int	ft_power(int a, int n)
@@ -34,7 +36,7 @@ static int	ft_power(int a, int n)
 	return (1);
 }
 
-static int	ft_base_count_digits(int n, int	len_base)
+static int	ft_base_count_digits(int n, int len_base)
 {
 	int	digits;
 
@@ -55,7 +57,7 @@ int	ft_putnbr_base(int n, char *base)
 	int	digits;
 	int	power;
 	int	i;
-	
+
 	len_base = ft_strlen(base);
 	digits = ft_base_count_digits(n, len_base);
 	power = ft_power(len_base, digits - 1);

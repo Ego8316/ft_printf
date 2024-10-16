@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcavet <hcavet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ego <ego@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 14:34:16 by hcavet            #+#    #+#             */
-/*   Updated: 2024/10/15 16:09:13 by hcavet           ###   ########.fr       */
+/*   Updated: 2024/10/16 15:49:36 by ego              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,10 @@
 int	main(void)
 {
 	int	result;
-	result = ft_putnbr_base(-2147483648, "0123456789ABCDEF");
-	printf(">%i\n", result);
+
+	result = ft_printf("salut %*i ca va", 10);
+	// printf("\n>%i\n", result);
+	(void)result;
+	// printf("%.4.4i", 3);
 	return (0);
 }
