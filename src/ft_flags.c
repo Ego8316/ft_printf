@@ -6,7 +6,7 @@
 /*   By: ego <ego@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 12:47:07 by ego               #+#    #+#             */
-/*   Updated: 2024/10/16 15:45:55 by ego              ###   ########.fr       */
+/*   Updated: 2024/10/18 16:34:30 by ego              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,33 +22,14 @@ t_flags	ft_reset_flags(void)
 	flags.alt = 0;
 	flags.zeros = 0;
 	flags.width = 0;
-	flags.precision = 0;
+	flags.precision = -1;
 	flags.spec = 0;
 	return (flags);
 }
 
-int	ft_get_precision(char *format, int i, va_list args, t_flags *flags)
-{
-	int	j;
-
-	j = i + 1;
-	if (format[j] == '*')
-	{
-		flags->precision = va_arg(args, int);
-		return (j);
-	}
-	flags->precision = 0;
-	while (ft_isdigit(format[j]))
-	{
-		flags->precision = flags->precision * 10 + (format[j] - '0');
-		j++;
-	}
-	return (j);
-}
-
 int	ft_get_width(char *format, int i, va_list args, t_flags *flags)
 {
-	int j;
+	int	j;
 
 	j = i;
 	if (format[j] == '*')
@@ -72,6 +53,26 @@ int	ft_get_width(char *format, int i, va_list args, t_flags *flags)
 	}
 	return (j);
 }
+
+int	ft_get_precision(char *format, int i, va_list args, t_flags *flags)
+{
+	int	j;
+
+	j = i + 1;
+	if (format[j] == '*')
+	{
+		flags->precision = va_arg(args, int);
+		return (j + 1);
+	}
+	flags->precision = 0;
+	while (ft_isdigit(format[j]))
+	{
+		flags->precision = flags->precision * 10 + (format[j] - '0');
+		j++;
+	}
+	return (j);
+}
+
 void	ft_update_flags(t_flags *flags)
 {
 	if (flags->space && flags->sign)

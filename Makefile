@@ -6,18 +6,20 @@
 #    By: ego <ego@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/15 12:42:34 by hcavet            #+#    #+#              #
-#    Updated: 2024/10/16 13:49:51 by ego              ###   ########.fr        #
+#    Updated: 2024/10/18 16:53:53 by ego              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 IDIR	=	include/
 SDIR	=	src/
 
-CFILES	=	ft_printf.c		\
-			ft_display.c	\
-			ft_string.c		\
-			ft_flags.c		\
-			ft_isflag.c
+CFILES	=	ft_printf.c			\
+			ft_display.c		\
+			ft_string.c			\
+			ft_flags.c			\
+			ft_isflag.c			\
+			ft_printf_char.c	\
+			ft_printf_str.c
 SRCS	=	$(addprefix $(SDIR), $(CFILES))
 OBJS	=	$(SRCS:.c=.o)
 
@@ -85,4 +87,4 @@ header	:
 			echo "===============================================\n"
 
 test	:	all
-			$(CC) $(CFLAGS) main.c -L. -lftprintf -o $(TNAME) 
+			$(CC) main.c -L. -lftprintf -o $(TNAME) 

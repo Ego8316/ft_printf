@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isflag.c                                        :+:      :+:    :+:   */
+/*   ft_printf_char.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ego <ego@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/16 13:14:19 by ego               #+#    #+#             */
-/*   Updated: 2024/10/18 15:17:35 by ego              ###   ########.fr       */
+/*   Created: 2024/10/18 14:34:45 by ego               #+#    #+#             */
+/*   Updated: 2024/10/18 15:42:31 by ego              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_ismodif(int c)
+int	ft_printf_char(char c, t_flags flags)
 {
-	return (c == '-' || c == '0' || c == '.' || c == '#' || c == ' '
-		|| c == '+' || c == '*');
-}
+	int	s;
 
-int	ft_isdigit(int c)
-{
-	return ((c >= '0') && (c <= '9'));
-}
-
-int	ft_isspec(int c)
-{
-	return (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i'
-		|| c == 'u' || c == 'x' || c == 'X' || c == '%');
-}
-
-int	ft_isflag(int c)
-{
-	return (ft_ismodif(c) || ft_isdigit(c) || ft_isspec(c));
+	s = 0;
+	if (flags.width > 1 && !flags.left)
+		s += ft_pad_width(' ', flags.width - 1);
+	s += ft_putchar(c);
+	if (flags.width > 1 && flags.left)
+		s += ft_pad_width(' ', flags.width - 1);
+	return (s);
 }

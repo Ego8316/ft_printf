@@ -6,7 +6,7 @@
 /*   By: ego <ego@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 15:00:18 by hcavet            #+#    #+#             */
-/*   Updated: 2024/10/16 13:46:59 by ego              ###   ########.fr       */
+/*   Updated: 2024/10/18 16:52:46 by ego              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,42 @@
 
 int	ft_putchar(char c)
 {
-	write(1, &c, 1);
-	return (1);
+	return (write(1, &c, 1));
 }
 
-int	ft_putstr(char *s)
+int	ft_pad_width(char c, int width)
+{
+	int	s;
+
+	s = 0;
+	while (s < width)
+	{
+		write(1, &c, 1);
+		s++;
+	}
+	return (s);
+}
+
+int	ft_putstr(char *str)
 {
 	int	len;
 
-	len = ft_strlen(s);
-	write(1, s, len);
+	len = ft_strlen(str);
+	write(1, str, len);
 	return (len);
+}
+
+int	ft_putnstr(char *str, int size)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] && i < size)
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
+	return (i);
 }
 
 static int	ft_power(int a, int n)

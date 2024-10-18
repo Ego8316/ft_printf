@@ -6,7 +6,7 @@
 /*   By: ego <ego@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 12:50:27 by hcavet            #+#    #+#             */
-/*   Updated: 2024/10/16 15:47:49 by ego              ###   ########.fr       */
+/*   Updated: 2024/10/18 16:04:27 by ego              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,11 @@ typedef struct s_flags
 int		ft_printf(const char *format, ...);
 int		ft_parse_format(char *format, va_list args);
 int		ft_parse_flags(char *format, int i, va_list args, t_flags *flags);
+int		ft_parse_spec(char spec, va_list args, t_flags flags);
+
+// ft_printf specifiers
+int		ft_printf_char(char c, t_flags flags);
+int		ft_printf_str(char *str, t_flags flags);
 
 // Flag utilities
 t_flags	ft_reset_flags(void);
@@ -50,9 +55,11 @@ int		ft_isspec(int c);
 // Strings
 int		ft_strlen(char *s);
 
-// Display
+// Display basics
 int		ft_putchar(char c);
-int		ft_putstr(char *s);
+int		ft_pad_width(char c, int width);
+int		ft_putstr(char *str);
+int		ft_putnstr(char *str, int size);
 int		ft_putnbr_base(int n, char *base);
 
 #endif
