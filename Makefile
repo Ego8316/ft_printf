@@ -6,7 +6,7 @@
 #    By: ego <ego@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/15 12:42:34 by hcavet            #+#    #+#              #
-#    Updated: 2024/10/18 16:53:53 by ego              ###   ########.fr        #
+#    Updated: 2024/10/21 16:58:32 by ego              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,11 @@ CFILES	=	ft_printf.c			\
 			ft_flags.c			\
 			ft_isflag.c			\
 			ft_printf_char.c	\
-			ft_printf_str.c
+			ft_printf_str.c		\
+			ft_printf_ptr.c		\
+			ft_printf_int.c		\
+			ft_printf_uint.c	\
+			ft_printf_xint.c
 SRCS	=	$(addprefix $(SDIR), $(CFILES))
 OBJS	=	$(SRCS:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: ego <ego@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 12:58:43 by hcavet            #+#    #+#             */
-/*   Updated: 2024/10/18 16:47:24 by ego              ###   ########.fr       */
+/*   Updated: 2024/10/21 17:02:37 by ego              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ int	ft_parse_spec(char spec, va_list args, t_flags flags)
 	else if (spec == 's')
 		s = ft_printf_str(va_arg(args, char *), flags);
 	else if (spec == 'p')
-		s = ft_putchar('p');
-	else if (spec == 'd' || spec == 'i' || spec == 'u')
-		s = ft_putnbr_base(va_arg(args, long long), "0123456789");
-	else if (spec == 'x')
-		s = ft_putnbr_base(va_arg(args, int), "0123456789abcdef");
-	else if (spec == 'X')
-		s = ft_putnbr_base(va_arg(args, int), "0123456789ABCDEF");
+		s = ft_printf_ptr(va_arg(args, void *), flags);
+	else if (spec == 'd' || spec == 'i')
+		s = ft_printf_int(va_arg(args, int), flags);
+	else if (spec == 'u')
+		s = ft_printf_uint(va_arg(args, unsigned int), flags);
+	else if (spec == 'x' || spec == 'X')
+		s = ft_printf_xint(va_arg(args, int), spec, flags);
 	else if (spec == '%')
 		s = ft_putchar('%');
 	return (s);
@@ -36,7 +36,7 @@ int	ft_parse_spec(char spec, va_list args, t_flags flags)
 
 int	ft_parse_flags(char *format, int i, va_list args, t_flags *flags)
 {
-	while (format[i] && ft_isflag(format[i]) && ft_isflag(format[i - 1]))
+	while (ft_isflag(format[i]))
 	{
 		if (format[i] == '-')
 			flags->left = 1;
@@ -48,18 +48,17 @@ int	ft_parse_flags(char *format, int i, va_list args, t_flags *flags)
 			flags->zeros = 1;
 		if (format[i] == '#')
 			flags->alt = 1;
-		if (format[i] == '*' || ft_isdigit(format[i]))
+		if (format[i] == '*' || (ft_isdigit(format[i]) && format[i] != '0'))
 			i = ft_get_width(format, i, args, flags);
 		if (format[i] == '.')
 			i = ft_get_precision(format, i, args, flags);
-		if (ft_isspec(format[i]))
+		if (ft_isspec(format[i]) || (format[i] == '.' && flags->precision > -1))
 		{
-			flags->spec = format[i];
+			ft_update_flags(flags);
 			return (i);
 		}
 		i++;
 	}
-	ft_update_flags(flags);
 	return (i);
 }
 
@@ -78,10 +77,10 @@ int	ft_parse_format(char *format, va_list args)
 		{
 			flags = ft_reset_flags();
 			j = ft_parse_flags(format, i + 1, args, &flags);
-			if (flags.spec)
+			if (ft_isspec(format[j]))
 			{
 				i = j;
-				s += ft_parse_spec(flags.spec, args, flags);
+				s += ft_parse_spec(format[j], args, flags);
 			}
 			else
 				s += ft_putchar(format[i]);

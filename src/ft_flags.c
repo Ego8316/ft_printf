@@ -6,7 +6,7 @@
 /*   By: ego <ego@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 12:47:07 by ego               #+#    #+#             */
-/*   Updated: 2024/10/18 16:34:30 by ego              ###   ########.fr       */
+/*   Updated: 2024/10/21 15:55:44 by ego              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ t_flags	ft_reset_flags(void)
 	flags.zeros = 0;
 	flags.width = 0;
 	flags.precision = -1;
-	flags.spec = 0;
 	return (flags);
 }
 
@@ -77,7 +76,7 @@ void	ft_update_flags(t_flags *flags)
 {
 	if (flags->space && flags->sign)
 		flags->space = 0;
-	if (flags->zeros && flags->left)
+	if (flags->zeros && (flags->left || flags->precision >= 0))
 		flags->zeros = 0;
 	return ;
 }

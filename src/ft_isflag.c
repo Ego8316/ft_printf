@@ -6,7 +6,7 @@
 /*   By: ego <ego@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:14:19 by ego               #+#    #+#             */
-/*   Updated: 2024/10/18 15:17:35 by ego              ###   ########.fr       */
+/*   Updated: 2024/10/18 18:59:46 by ego              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,5 @@ int	ft_isspec(int c)
 
 int	ft_isflag(int c)
 {
-	return (ft_ismodif(c) || ft_isdigit(c) || ft_isspec(c));
+	return (ft_ismodif(c) || ft_isdigit(c));
 }

@@ -6,7 +6,7 @@
 /*   By: ego <ego@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 15:00:18 by hcavet            #+#    #+#             */
-/*   Updated: 2024/10/18 16:52:46 by ego              ###   ########.fr       */
+/*   Updated: 2024/10/21 16:29:45 by ego              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	ft_putnstr(char *str, int size)
 	return (i);
 }
 
-static int	ft_power(int a, int n)
+static long long	ft_power(int a, int n)
 {
 	if (n < 0)
 		return (0);
@@ -61,7 +61,7 @@ static int	ft_power(int a, int n)
 	return (1);
 }
 
-static int	ft_base_count_digits(int n, int len_base)
+static int	ft_base_count_digits(long long n, int len_base)
 {
 	int	digits;
 
@@ -76,11 +76,11 @@ static int	ft_base_count_digits(int n, int len_base)
 	return (digits);
 }
 
-int	ft_putnbr_base(int n, char *base)
+int	ft_putnbr_base(long long n, char *base)
 {
 	int	len_base;
 	int	digits;
-	int	power;
+	long long	power;
 	int	i;
 
 	len_base = ft_strlen(base);
