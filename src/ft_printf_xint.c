@@ -6,7 +6,7 @@
 /*   By: ego <ego@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 16:39:57 by ego               #+#    #+#             */
-/*   Updated: 2024/10/21 17:04:34 by ego              ###   ########.fr       */
+/*   Updated: 2024/10/21 17:08:42 by ego              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,3 @@ int	ft_printf_xint(unsigned int n, char spec, t_flags flags)
 		s += ft_pad_width(' ', flags.width - nbr_len - zeros);
 	return (s);
 }
-
