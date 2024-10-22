@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_xint.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ego <ego@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: hcavet <hcavet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 16:39:57 by ego               #+#    #+#             */
-/*   Updated: 2024/10/21 17:08:42 by ego              ###   ########.fr       */
+/*   Updated: 2024/10/22 14:23:20 by hcavet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,14 @@ int	ft_printf_xint(unsigned int n, char spec, t_flags flags)
 		return (ft_pad_width(' ', flags.width));
 	if (!flags.zeros)
 		zeros = (flags.precision > nbr_len) * (flags.precision - nbr_len);
-	nbr_len += 2 * flags.alt;
+	nbr_len += 2 * (flags.alt && n > 0);
 	if (flags.zeros)
 		zeros = flags.width - nbr_len;
 	if (!flags.left && !flags.zeros)
 		s += ft_pad_width(' ', flags.width - nbr_len - zeros);
-	if (flags.alt && spec == 'x')
+	if (flags.alt && spec == 'x' && n > 0)
 		ft_putstr("0x");
-	else if (flags.alt && spec == 'X')
+	else if (flags.alt && spec == 'X' && n > 0)
 		ft_putstr("0X");
 	s += ft_pad_width('0', zeros);
 	s += nbr_len;

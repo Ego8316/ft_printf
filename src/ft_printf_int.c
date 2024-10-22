@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_int.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ego <ego@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: hcavet <hcavet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 15:29:55 by ego               #+#    #+#             */
-/*   Updated: 2024/10/21 16:29:31 by ego              ###   ########.fr       */
+/*   Updated: 2024/10/22 14:50:08 by hcavet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,21 @@ static void	ft_putnbr(int n)
 		ft_putchar('0' + n);
 }
 
+static int	ft_printf_int_null(t_flags flags)
+{
+	int	s;
+
+	s = 0;
+	if (flags.sign && flags.left)
+		s += ft_putchar('+');
+	if (flags.space)
+		s += ft_putchar(' ');
+	s += ft_pad_width(' ', flags.width - (flags.sign || flags.space));
+	if (flags.sign && !flags.left)
+		s += ft_putchar('+');
+	return (s);
+}
+
 int	ft_printf_int(int n, t_flags flags)
 {
 	int	s;
@@ -54,7 +69,7 @@ int	ft_printf_int(int n, t_flags flags)
 	s = 0;
 	nbr_len = ft_nbrlen(n);
 	if (!n && flags.precision == 0)
-		return (ft_pad_width(' ', flags.width));
+		return (ft_printf_int_null(flags));
 	if (!flags.zeros)
 		zeros = (flags.precision > nbr_len) * (flags.precision - nbr_len);
 	nbr_len += (n < 0) + ((flags.sign || flags.space) && n >= 0);

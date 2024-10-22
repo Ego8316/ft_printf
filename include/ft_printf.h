@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ego <ego@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: hcavet <hcavet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 12:50:27 by hcavet            #+#    #+#             */
-/*   Updated: 2024/10/21 17:08:56 by ego              ###   ########.fr       */
+/*   Updated: 2024/10/22 15:20:44 by hcavet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 # define FT_PRINTF_H
 
-# include <stdio.h>
 # include <stdlib.h>
 # include <stdarg.h>
 # include <unistd.h>
@@ -54,9 +53,6 @@ int		ft_isflag(int c);
 int		ft_ismodif(int c);
 int		ft_isdigit(int c);
 int		ft_isspec(int c);
-
-// Strings
-int		ft_strlen(char *s);
 
 // Display basics
 int		ft_putchar(char c);

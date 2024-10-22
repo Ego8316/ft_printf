@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ego <ego@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: hcavet <hcavet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 12:58:43 by hcavet            #+#    #+#             */
-/*   Updated: 2024/10/21 17:02:37 by ego              ###   ########.fr       */
+/*   Updated: 2024/10/22 15:20:16 by hcavet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	ft_parse_spec(char spec, va_list args, t_flags flags)
 	else if (spec == 'x' || spec == 'X')
 		s = ft_printf_xint(va_arg(args, int), spec, flags);
 	else if (spec == '%')
-		s = ft_putchar('%');
+		s = ft_printf_char(spec, flags);
 	return (s);
 }
 

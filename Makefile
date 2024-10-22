@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ego <ego@student.42.fr>                    +#+  +:+       +#+         #
+#    By: hcavet <hcavet@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/15 12:42:34 by hcavet            #+#    #+#              #
-#    Updated: 2024/10/21 16:58:32 by ego              ###   ########.fr        #
+#    Updated: 2024/10/22 15:40:58 by hcavet           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,7 +60,7 @@ clean	:
 
 fclean	:	clean
 			echo "Removing binary files..."
-			$(RM) $(NAME)
+			$(RM) $(NAME) $(TNAME)
 			echo "$(ORANGE)[OK] All binary files have been removed.$(RESET)"
 
 re		:	fclean all

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_str.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ego <ego@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: hcavet <hcavet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 15:20:33 by ego               #+#    #+#             */
-/*   Updated: 2024/10/18 19:06:03 by ego              ###   ########.fr       */
+/*   Updated: 2024/10/22 14:36:36 by hcavet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,17 @@
 
 static int	ft_printf_str_null(t_flags flags)
 {
-	int	s;
+	int		s;
 
 	s = 0;
 	if (flags.precision > -1 && flags.precision < 6)
-		s += ft_pad_width(' ', flags.width);
+	{
+		if (!flags.left)
+			s += ft_pad_width(' ', flags.width - flags.precision);
+		s += ft_putnstr("(null)", flags.precision);
+		if (flags.left)
+			s += ft_pad_width(' ', flags.width - flags.precision);
+	}
 	else
 	{
 		if (!flags.left)

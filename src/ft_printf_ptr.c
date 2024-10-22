@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_ptr.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ego <ego@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: hcavet <hcavet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 16:55:15 by ego               #+#    #+#             */
-/*   Updated: 2024/10/21 16:29:16 by ego              ###   ########.fr       */
+/*   Updated: 2024/10/22 14:16:45 by hcavet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,10 @@ static int	ft_printf_ptr_null(t_flags flags)
 
 	s = 0;
 	if (flags.width && !flags.left)
-		s += ft_pad_width(' ', flags.width - 5);
-	s += ft_putstr("(nil)");
+		s += ft_pad_width(' ', flags.width - 3);
+	s += ft_putstr("0x0");
 	if (flags.width && flags.left)
-		s += ft_pad_width(' ', flags.width - 5);
+		s += ft_pad_width(' ', flags.width - 3);
 	return (s);
 }
 
