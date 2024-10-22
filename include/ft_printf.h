@@ -6,7 +6,7 @@
 /*   By: hcavet <hcavet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 12:50:27 by hcavet            #+#    #+#             */
-/*   Updated: 2024/10/22 15:20:44 by hcavet           ###   ########.fr       */
+/*   Updated: 2024/10/22 16:08:07 by hcavet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,9 @@ int		ft_isflag(int c);
 int		ft_ismodif(int c);
 int		ft_isdigit(int c);
 int		ft_isspec(int c);
+
+// String
+int		ft_strlen(char *s);
 
 // Display basics
 int		ft_putchar(char c);
