@@ -6,7 +6,7 @@
 /*   By: hcavet <hcavet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 14:34:16 by hcavet            #+#    #+#             */
-/*   Updated: 2024/10/22 15:02:18 by hcavet           ###   ########.fr       */
+/*   Updated: 2024/10/22 16:51:59 by hcavet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@ int	main(void)
 {
 	int		result1;
 	int		result2;
-	char	*string = "salut";
+	char	*string;
 
+	string = "salut";
 	result1 = ft_printf("[%***d]\n", 5, INT_MIN);
 	result2 = printf("[%***d]\n", 5, INT_MIN);
 	printf("\n>%i\t%i\n", result1, result2);
