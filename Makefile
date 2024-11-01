@@ -6,7 +6,7 @@
 #    By: hcavet <hcavet@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/15 12:42:34 by hcavet            #+#    #+#              #
-#    Updated: 2024/11/01 13:02:46 by hcavet           ###   ########.fr        #
+#    Updated: 2024/11/01 13:04:39 by hcavet           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,7 +65,7 @@ fclean	:	clean
 re		:	fclean all
 
 .PHONY	:	all clean fclean re
-.SILENT	:	all $(NAME) $(OBJS) norm debug clean fclean re header bonus
+.SILENT	:	all $(NAME) $(OBJS) norm clean fclean re header bonus
 
 RED     = \033[31m
 ORANGE  = \033[38;5;214m
